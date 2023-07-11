@@ -9,12 +9,13 @@ const getAll = async () => {
 
 const createTask = async (task) => {
 
-  const { title } = task;
+  const { name } = task;
+  const { email } = task;
   const dateUTC = new Date(Date.now()).toUTCString();
 
-  query = 'INSERT INTO tasks(title, status, created_at) VALUES (?, ?, ?)';
+  query = 'INSERT INTO tasks(name, email, status, created_at) VALUES (?, ?, ?, ?)';
 
-  const [createdTask] = await connection.execute(query, [title, 'pendente', dateUTC]);
+  const [createdTask] = await connection.execute(query, [name, email, 'ativo', dateUTC]);
   return { insertId: createdTask.insertId };
 
 };
@@ -28,11 +29,11 @@ const deleteTask = async (id) => {
 
 const updateTask = async (id, task) => {
 
-  const { title, status } =  task;
+  const { name, email, status } =  task;
 
-  query = 'UPDATE tasks SET title = ?, status = ? WHERE id = ?';
+  query = 'UPDATE tasks SET name = ?, email = ?, status = ? WHERE id = ?';
 
-  const [updatedTask] = await connection.execute(query, [title, status, id]);
+  const [updatedTask] = await connection.execute(query, [name, email, status, id]);
   return updatedTask;
 
 };
