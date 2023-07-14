@@ -112,8 +112,7 @@ class Registros extends React.Component {
 
     submit = () => {
 
-        // eslint-disable-next-line eqeqeq
-        if (this.state.id == 0) {
+        if (this.state.id === 0) {
             const register = {
                 name: this.state.name,
                 email: this.state.email
