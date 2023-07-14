@@ -1,6 +1,6 @@
 import Home from './components/Home';
 import Sobre from './components/Sobre';
-import Cadastros from './components/Cadastros';
+import Registros from './components/Registros';
 import { BrowserRouter, Link, Routes, Route, } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -25,7 +25,7 @@ function App() {
 
         <Routes>
           <Route path="/" index element={<Home />}></Route>
-          <Route path="/alunos" element={<Cadastros />}></Route>
+          <Route path="/alunos" element={<Registros />}></Route>
           <Route path="/sobre" element={<Sobre />}></Route>
 
         </Routes>

@@ -1,0 +1,198 @@
+// import React, { useState, useEffect, useId } from 'react'
+// import { Table, Button, Badge, Form } from "react-bootstrap"
+// // import { BrowserRouter, Link, Routes, Route, } from 'react-router-dom';
+
+
+
+
+// const Registros = () => {
+//     const [id] = useState(0)
+//     const [name, setName] = useState('');
+//     const [email, setEmail] = useState('');
+//     const [register, setRegister] = useState([]);
+
+//     // GET with fetch API
+//     useEffect(() => {
+//         const fetchRegister = async () => {
+//             const response = await fetch(
+//                 'http://localhost:3030/tasks'
+//             );
+//             const data = await response.json();
+//             console.log(data);
+//             setRegister(data);
+//         };
+//         fetchRegister();
+//     }, []);
+
+//     // const loadTasks = async () =>{
+//     //     const register = await response();
+
+//     //     register.array.forEach(element => {
+//     //     });
+//     // }
+
+//     // loadTasks();
+
+
+//     // Post with fetchAPI
+//     const addRegister = async (name, email) => {
+//         let response = await fetch('http://localhost:3030/tasks', {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 name: name,
+//                 email: email,
+//                 userId: Math.random().toString(36).slice(2),
+//             }),
+//             headers: {
+//                 'Content-type': 'application/json; charset=UTF-8',
+//             },
+//         });
+//         let data = await response.json();
+//         setRegister((register) => [data, ...register]);
+//         setName('');
+//         setEmail('');
+//         if (response.status === 200) { }
+//         else {
+//             alert('Aluno adicionado com sucesso!')
+//         }
+//     };
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         addRegister(name, email);
+//     };
+
+//     // Delete with fetchAPI
+//     const deleteRegister = async (id) => {
+//         let response = await fetch(
+//             `http://localhost:3030/tasks/${id}`,
+//             {
+//                 method: 'DELETE',
+//             }
+//         );
+//         if (response.status === 200) {
+//             setRegister(
+//                 register.filter((aluno) => {
+//                     return aluno.id !== id;
+//                 })
+//             );
+//         } else {
+//             alert('Aluno excluído')
+//         }
+//     };
+
+//     // Catch with fetchAPI
+//     // const catchRegister = (id) => {
+//     //     fetch(
+//     //         `http://localhost:3030/tasks/${id}`,
+//     //         {
+//     //             method: 'GET'
+//     //         }
+//     //     )
+//     //         .then(response => response.json())
+//     //         .then(register => {
+//     //             this.setState({
+//     //                 id: (register.id),
+//     //                 setName: (register.name),
+//     //                 setEmail: (register.email)
+//     //             })
+//     //         });
+
+//     // };
+
+
+//     const catchRegister = async (id, name, email) => {
+//         let response = await fetch(
+//             `http://localhost:3030/tasks/${id}`,
+//             {
+//                 method: 'GET'
+
+//                 ,
+//                 body: JSON.stringify({
+//                     name: name,
+//                     email: email,
+//                     userId: id
+//                 }),
+//                 headers: {
+//                     'Content-type': 'application/json; charset=UTF-8',
+//                 }
+//             })
+//         const data = response.json();
+//         console.log(data);
+//         setRegister(data);
+//         catchRegister();
+//     };
+
+
+//     // Patch with fetchAPI
+//     // const patchRegister = async (id) => {
+//     //     let response = await fetch(
+//     //         `http://localhost:3030/tasks/${id}`,
+//     //         {
+//     //             method: 'PATCH',
+//     //         }
+//     //     );
+//     //     let data = await response.json();
+//     //     setRegister((register) => [data, ...register]);
+//     //     setName('');
+//     //     setEmail('');
+//     //     if (response.status === 200) {
+//     //         setRegister(
+//     //             register.filter((aluno) => {
+//     //                 return aluno.id !== id;
+//     //             })
+//     //         );
+//     //     } else {
+//     //         alert('Dados atualizados com sucesso!')
+//     //     }
+//     // };
+
+
+//     return (
+//         <div>
+//             <Form onSubmit={handleSubmit}>
+//                 <Form.Group className="mb-3">
+//                     <Form.Label>ID</Form.Label>
+//                     <Form.Control type="text" value={id} readOnly={true} />
+//                 </Form.Group>
+//                 <Form.Group className="mb-3">
+//                     <Form.Label>Nome</Form.Label>
+//                     <Form.Control type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
+//                 </Form.Group>
+//                 <Form.Group className="mb-3">
+//                     <Form.Label>Email</Form.Label>
+//                     <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//                 </Form.Group>
+//                 <Button variant="primary" type="submit">Adicionar aluno</Button>
+//             </Form>
+
+//             <Table striped bordered hover>
+//                 <tr>
+//                     <th>Nome</th>
+//                     <th>E-mail</th>
+//                     <th>Status</th>
+//                     <th>Opções</th>
+//                 </tr>
+//                 <tbody>
+
+//                     {
+//                         register.map((aluno) =>
+//                             <tr>
+//                                 <td>{aluno.name}</td>
+//                                 <td>{aluno.email}</td>
+//                                 <td><Badge bg="success">{aluno.status}</Badge></td>
+//                                 <td><Button variant="outline-warning" onClick={() => catchRegister(aluno.id)}>Editar</Button>{'  '}
+//                                     <Button variant="outline-danger" onClick={() => deleteRegister(aluno.id)}>Excluir</Button></td>
+//                             </tr>
+//                         )
+//                     }
+
+//                 </tbody>
+//             </Table>
+//         </div>
+//     )
+// };
+
+
+
+// export default Registros;
